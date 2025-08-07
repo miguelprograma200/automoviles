@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Autos Deportivos{% endblock %}
+{% block body %}
+
+
+ <P class="parrafo"><br>En esta sección te presentamos los mejores carros deportivos, diseñados para quienes buscan adrenalina, 
+    potencia y estilo. Desde los clásicos de siempre hasta los modelos más innovadores del mercado, 
+    aquí encontrarás máquinas que llevan el rendimiento al límite. Si lo tuyo son los motores que rugen
+     y las curvas que desafían, este es tu lugar.
+    </P>
+
+
+<div class="card-container">
+        <div class="card"> 
+            <img src="{{ url_for('static' , filename='images/deportivo1.png')}}" alt="" width="400" height="400">
+            <div class="card-content">
+              
+            </div>  
+        </div>
+
+         <div class="card"> 
+            <img src="{{ url_for('static' , filename='images/deportivo2.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+                
+            </div>
+        </div>
+
+         <div class="card"> 
+            <img src="{{ url_for('static', filename='images/deportivo3.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+                
+            </div>
+        </div>
+
+        <div class="card"> 
+            <img src="{{ url_for('static', filename='images/deportivo4.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+                
+            </div>
+        </div>
+</div>
+
+
+  <div class="card-container">
+        <div class="card"> 
+            <img src="{{ url_for('static', filename='images/deportivo5.png')}}" alt="" width="400" height="400">
+            <div class="card-content">
+               
+            </div>  
+        </div>
+
+         <div class="card">
+            <img src="{{ url_for('static', filename='images/deportivo6.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+                
+            </div>
+        </div>
+
+         <div class="card"> 
+            <img src="{{ url_for('static', filename='images/deportivo7.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+               
+            </div>
+        </div>
+
+        <div class="card"> 
+            <img src="{{ url_for('static', filename='images/deportivo8.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+                
+            </div>
+        </div>
+
+   </div>
+
+ 
+   
+  <hr>
+
+     <P class="parrafo"><br>Explora nuestras fichas técnicas, compara modelos y elige el carro 
+        deportivo que te hará vibrar. No se trata solo de conducir, 
+        se trata de vivir la experiencia completa. ¡El próximo nivel de emoción sobre ruedas te espera!
+    </P>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Autos Familiares{% endblock %}
+{% block body %}
+
+<P class="parrafo"><br>En esta sección encontrarás una cuidadosa selección de carros 
+    familiares pensados para acompañarte en cada etapa de la vida. Modelos con amplio 
+    espacio interior, tecnología de asistencia al conductor
+     y características que priorizan la seguridad de los tuyos. Porque sabemos que viajar
+      en familia no es solo llegar al destino, sino disfrutar el camino.
+    </P>
+
+
+<div class="card-container">
+        <div class="card"> 
+            <img src="{{ url_for('static' , filename='images/familiares1.png')}}" alt="" width="400" height="400">
+            <div class="card-content">
+               
+            </div>  
+        </div>
+
+         <div class="card"> 
+            <img src="{{ url_for('static' , filename='images/familiares2.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+             
+            </div>
+        </div>
+
+         <div class="card"> 
+            <img src="{{ url_for('static', filename='images/familiares3.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+               
+            </div>
+        </div>
+
+        <div class="card"> 
+            <img src="{{ url_for('static', filename='images/familiares4.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+                
+            </div>
+        </div>
+</div>
+
+
+
+  <div class="card-container">
+        <div class="card"> 
+            <img src="{{ url_for('static', filename='images/familiares5.png')}}" alt="" width="400" height="400">
+            <div class="card-content">
+              
+            </div>  
+        </div>
+
+         <div class="card">
+            <img src="{{ url_for('static', filename='images/familiares6.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+                
+            </div>
+        </div>
+
+         <div class="card"> 
+            <img src="{{ url_for('static', filename='images/familiares7.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+              
+            </div>
+        </div>
+
+        <div class="card"> 
+            <img src="{{ url_for('static', filename='images/familiares8.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+            
+            </div>
+        </div>
+
+   </div>
+
+   
+
+  <hr>
+
+     <P class="parrafo"><br> Todos nuestros mejores autos familiares 
+
+
+
+{% endblock %}

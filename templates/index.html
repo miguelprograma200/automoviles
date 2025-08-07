@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+{% block body %}
+
+<!---carucel de imagenes -->
+<div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{{url_for('static', filename='images/carro1.png')}}" class="d-block w-100" alt="..." height="900px">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>La Pasión sobre Ruedas</h5>
+        <p>Descubre nuestra exclusiva colección de automóviles, donde cada modelo es una obra de arte de ingeniería y diseño. Desde la elegancia
+         clásica hasta la potencia moderna, encuentra el carro que acelera tu corazón y te lleva a vivir nuevas aventuras en la carretera.</p>
+        <a href="#"><button type="button" class="btn btn-primary">Empezar Ahora</button></a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{{url_for('static', filename='images/carro2.png')}}" class="d-block w-100" alt="..." height="900px">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Tu Viaje, Tu Estilo</h5>
+        <p> En nuestra galería, cada vehículo cuenta una historia de innovación y rendimiento. Explora la diversidad de modelos que combinan lujo, tecnología
+         y confort, diseñados para llevarte más allá de lo esperado. Elige el carro que refleja tu personalidad y redefine cada trayecto.</p>
+        <a href="#"><button type="button" class="btn btn-primary">Empezar Ahora</button></a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{{url_for('static', filename='images/carro3.png')}}" class="d-block w-100" alt="..." height="900px">
+      <div class="carousel-caption d-none d-md-block">
+        <h5> Domina el Asfalto</h5>
+        <p> Siente la emoción de la carretera con nuestra selección de carros de alto rendimiento y diseño vanguardista. 
+        Cada vehículo está pensado para ofrecer una experiencia de conducción excepcional, combinando potencia, seguridad y tecnología de punta. </p>
+       <a href="#"><button type="button" class="btn btn-primary">Empezar Ahora</button></a>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!---acordeon de contenido boot-->
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+       Mantenimiento y Servicios Esenciales
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+      <div class="accordion-body">
+       ¿Cómo mantener tu carro en óptimas condiciones? Mantener tu vehículo en perfecto estado es clave para su durabilidad y 
+       seguridad. Aquí puedes programar recordatorios de mantenimiento, llevar un registro de tus servicios
+     (cambio de aceite, revisión de frenos, rotación de neumáticos, etc.) y encontrar talleres recomendados cerca de ti.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+       Historial Detallado de tu Vehículo
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+      <div class="accordion-body">
+       Conoce a fondo la historia de tu carro Accede a un historial completo de tu vehículo,
+        incluyendo propietarios anteriores, kilometraje registrado, reparaciones mayores, y cualquier incidente reportado. 
+       Esta información es crucial para el valor de reventa y para tu tranquilidad. Mantén un registro organizado de todo lo relevante.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+       Compra y Venta Inteligente
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+      <div class="accordion-body">
+        Guías para comprar o vender tu carro Ya sea que estés buscando tu próximo carro o 
+        quieras vender el actual, te ofrecemos herramientas y consejos. Desde la valoración 
+        de tu vehículo, hasta listas de verificación para la inspección, y orientación sobre 
+        la documentación necesaria. Haz transacciones seguras e informadas.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--acprdeon de boot-->
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src=" {{url_for('static', filename='images/x-diamond-fill.svg')}}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+      Gestiona la Información de Tus Vehículos
+      <p>Permite a los usuarios guardar, organizar y acceder fácilmente a sus recetas.</p>
+    </a>
+  </div>
+</nav>
+
+<br>
+<hr>
+
+<div class="container">
+    <!-- Tabla de Clientes -->
+    <div class="row mt-4">
+    <h3>Clientes</h3>
+    <a href="{{ url_for('add_cliente') }}" class="btn btn-primary mb-3" style="width: auto;">Agregar Cliente</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>NIF</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Acciones</th> <!-- Columna de acciones -->
+            </tr>
+        </thead>
+        <tbody>
+        {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.nif }}</td>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.direccion }}</td>
+                <td>{{ cliente.telefono }}</td>
+                <td>
+                    <!-- Botón para Editar -->
+                    <a href="{{ url_for('edit_cliente', nif=cliente.nif) }}" class="btn btn-warning btn-sm">Editar</a>
+
+                    <!-- Botón para Eliminar (dentro de un formulario) -->
+                    <form action="{{ url_for('delete_cliente', nif=cliente.nif) }}" method="POST" style="display:inline-block;">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+    <hr>
+
+    <!-- Tabla de Coches -->
+    <div class="row mt-4">
+        <h3>Coches</h3>
+        <a href="{{ url_for('add_coche') }}" class="btn btn-primary mb-3" style="width: auto;">Agregar Coche</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th>Matrícula</th>
+                  <th>Marca</th>
+                  <th>Modelo</th>
+                  <th>Color</th>
+                  <th>Precio</th>
+                  <th>Propietario (NIF)</th>
+                  <th>Acciones</th></tr>
+            </thead>
+            <tbody>
+            {% for coche in coches %}
+                <tr>
+                    <td>{{ coche.matricula }}</td>
+                    <td>{{ coche.marca }}</td>
+                    <td>{{ coche.modelo }}</td>
+                    <td>{{ coche.color }}</td>
+                    <td>{{ coche.precio }}</td>
+                    <td>{{ coche.nombre_cliente }} ({{ coche.nif_cliente }})</td>
+                    <td>
+                      <a href="{{ url_for('edit_coche', matricula=coche.matricula) }}" class="btn btn-warning btn-sm">Editar</a>
+
+                    <form action="{{ url_for('delete_coche', matricula=coche.matricula) }}" method="POST" style="display:inline-block;">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este coche? Perderás también todas sus revisiones asociadas.')">
+                            Eliminar
+                        </button>
+                    </form>
+                  </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <hr>
+
+    <!-- Tabla de Revisiones -->
+    <div class="row mt-4">
+        <h3>Revisiones</h3>
+        <a href="{{ url_for('add_revision') }}" class="btn btn-primary mb-3" style="width: auto;">Agregar Revisión</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Matrícula</th>
+                  <th>Filtro</th>
+                  <th>Aceite</th>
+                  <th>Frenos</th>
+                  <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for revision in revisiones %}
+                <tr>
+                    <td>{{ revision.codigo }}</td>
+                    <td>{{ revision.matricula_coche }}</td>
+                    <td>{{ 'Sí' if revision.filtro else 'No' }}</td>
+                    <td>{{ 'Sí' if revision.aceite else 'No' }}</td>
+                    <td>{{ 'Sí' if revision.frenos else 'No' }}</td>
+                    <td><!-- Aquí irían botones de editar/eliminar -->
+                          <a href="{{ url_for('edit_revision', codigo=revision.codigo) }}" class="btn btn-warning btn-sm">Editar</a>
+
+                    <!-- Botón para Eliminar (dentro de un formulario) -->
+                    <form action="{{ url_for('delete_revision', codigo=revision.codigo) }}" method="POST" style="display:inline-block;">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
+                    </form>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

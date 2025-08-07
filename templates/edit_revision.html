@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Editar Una Revisión{% endblock %}
+{% block body %}
+
+<h2>Editar Revisión</h2>
+
+<form action="{{ url_for('edit_revision', codigo=revision.codigo) }}" method="POST">
+    
+    <div class="mb-3">
+        <label class="form-label">Código de Revisión (No se puede editar)</label>
+        <input type="text" class="form-control" value="{{ revision.codigo }}" readonly>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Coche</label>
+        <select name="matricula_coche" class="form-select" required>
+            <option value="">Selecciona un coche...</option>
+            {% for coche in coches %}
+            <option value="{{ coche.matricula }}" {% if coche.matricula == revision.matricula_coche %}selected{% endif %}>
+                {{ coche.marca }} {{ coche.modelo }} ({{ coche.matricula }})
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input type="checkbox" name="filtro" class="form-check-input" {% if revision.filtro %}checked{% endif %}>
+        <label class="form-check-label">Cambio de Filtro</label>
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" name="aceite" class="form-check-input" {% if revision.aceite %}checked{% endif %}>
+        <label class="form-check-label">Cambio de Aceite</label>
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" name="frenos" class="form-check-input" {% if revision.frenos %}checked{% endif %}>
+        <label class="form-check-label">Revisión de Frenos</label>
+    </div>
+
+    <button type="submit" class="btn btn-success">Actualizar Revisión</button>
+    <a href="{{ url_for('inicio') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+{% block title %}Editar Un Coche{% endblock %}
+{% block body %}
+
+<h2>Editar Coche</h2>
+
+<form action="{{ url_for('edit_coche', matricula=coche.matricula) }}" method="POST">
+    <div class="mb-3">
+        <label class="form-label">Matrícula (No se puede editar)</label>
+        <input type="text" name="matricula" class="form-control" value="{{ coche.matricula }}" readonly>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Marca</label>
+        <input type="text" name="marca" class="form-control" value="{{ coche.marca }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Modelo</label>
+        <input type="text" name="modelo" class="form-control" value="{{ coche.modelo }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Color</label>
+        <input type="text" name="color" class="form-control" value="{{ coche.color }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Precio</label>
+        <input type="text" name="precio" class="form-control" value="{{ coche.precio }}" required>
+    </div>
+    
+    <!-- Menú desplegable para seleccionar el propietario -->
+    <div class="mb-3">
+        <label class="form-label">Propietario (Cliente)</label>
+        <select name="nif_cliente" class="form-select" required>
+            <option value="">Selecciona un cliente...</option>
+            {% for cliente in clientes %}
+            <option value="{{ cliente.nif }}" {% if cliente.nif == coche.nif_cliente %}selected{% endif %}>
+                {{ cliente.nombre }} ({{ cliente.nif }})
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Actualizar Coche</button>
+    <a href="{{ url_for('inicio') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

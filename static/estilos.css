@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/*section css estilos*/
+
+.contenedor {
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+
+.parrafo {
+   line-height: 1.6;
+   font-size: 18px;
+   text-align: justify;
+   line-height: 1.7;
+   font-size: 18px;
+   text-align: center;
+   color:#ffffff ;
+   font-family: "Poppins",sans-serif;
+   background-color: #343534;
+    
+}
+
+
+.card-container {
+   display: flex; 
+   justify-content: center;
+   flex-wrap: wrap;
+   margin-top: 100px;
+}
+
+.card {
+   width: 325px;
+   background-color: #ffffff;
+   border-radius: 8px;
+   overflow: hidden;
+   box-shadow: 0px 2px 4px rgba (0,0,0,0.2);
+   margin: 20px;
+
+}
+
+.card img{
+     width: 300;
+     height: 300; 
+}
+
+.card-content {
+    padding: 16px;
+}
+
+.card-content h3 {
+  font-size: 28px;
+  margin-bottom: 8px;
+  color: #000000;
+  font-family: "Poppins",sans-serif;
+}
+
+
+.card-content p {
+  color: #000000;
+  font-size: 15px;
+  line-height: 1.3;
+ font-family: "Poppins",sans-serif;
+}
+
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+{% block title %}Editar Un Cliente{% endblock %}
+{% block body %}
+
+<h2>Editar Cliente</h2>
+<!-- El formulario enviará los datos a la misma ruta de edición, pero con el método POST -->
+<form action="{{ url_for('edit_cliente', nif=cliente.nif) }}" method="POST">
+    <div class="mb-3">
+        <label class="form-label">NIF (No se puede editar)</label>
+        <!-- El NIF es la clave primaria, es buena práctica no permitir su edición -->
+        <input type="text" name="nif" class="form-control" value="{{ cliente.nif }}" readonly>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Nombre Completo</label>
+        <input type="text" name="nombre" class="form-control" value="{{ cliente.nombre }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Dirección</label>
+        <input type="text" name="direccion" class="form-control" value="{{ cliente.direccion }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Teléfono</label>
+        <input type="text" name="telefono" class="form-control" value="{{ cliente.telefono }}" required>
+    </div>
+    <button type="submit" class="btn btn-success">Actualizar Cliente</button>
+    <a href="{{ url_for('inicio') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+{% endblock %}

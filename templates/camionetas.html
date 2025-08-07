@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Autos tipo Camionetas{% endblock %}
+{% block body %}
+
+<P class="parrafo"><br>Las camionetas combinan fuerza, comodidad y estilo, 
+    siendo perfectas tanto para la aventura como para la ciudad. Aquí encontrarás modelos diseñados para quienes necesitan 
+    más espacio, mejor desempeño en todo tipo de terreno y una presencia
+     imponente en la carretera. Desde SUVs familiares hasta 4x4 listas para lo que venga.
+    </P>
+
+
+
+
+<div class="card-container">
+        <div class="card"> 
+            <img src="{{ url_for('static' , filename='images/camioneta1.png')}}" alt="" width="400" height="400">
+            <div class="card-content">
+            
+            </div>  
+        </div>
+
+         <div class="card"> 
+            <img src="{{ url_for('static' , filename='images/camioneta2.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+             
+            </div>
+        </div>
+
+         <div class="card"> 
+            <img src="{{ url_for('static', filename='images/camioneta3.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+              
+            </div>
+        </div>
+
+        <div class="card"> 
+            <img src="{{ url_for('static', filename='images/camioneta4.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+      
+            </div>
+        </div>
+</div>
+
+
+
+  <div class="card-container">
+        <div class="card"> 
+            <img src="{{ url_for('static', filename='images/camioneta5.png')}}" alt="" width="400" height="400">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+            </div>  
+        </div>
+
+         <div class="card">
+            <img src="{{ url_for('static', filename='images/camioneta6.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+            </div>
+        </div>
+
+         <div class="card"> 
+            <img src="{{ url_for('static', filename='images/camioneta7.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="card"> 
+            <img src="{{ url_for('static', filename='images/camioneta8.png')}}" alt="" width="400" height="400"  >
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+            </div>
+        </div>
+
+   </div>
+
+    
+  
+  <hr>
+
+     <P class="parrafo"><br> Explora nuestra gama de camionetas y encuentra la 
+        que se adapta a tu estilo de vida. Ya sea que busques capacidad de carga, confort
+         para toda la familia o rendimiento todoterreno, aquí está tu próxima 
+         compañera de ruta. ¡El poder y la libertad están a un clic de distancia!
+    </P>
+
+
+
+
+{% endblock %}

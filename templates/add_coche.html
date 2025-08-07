@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Agregar Un Coche{% endblock %}
+{% block body %}
+<h2>Agregar un Coche Nuevo</h2>
+<form action="{{ url_for('add_coche') }}" method="POST">
+    <div class="mb-3">
+        <label class="form-label">Matrícula</label>
+        <input type="text" name="matricula" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Marca</label>
+        <input type="text" name="marca" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Modelo</label>
+        <input type="text" name="modelo" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Color</label>
+        <input type="text" name="color" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Precio</label>
+        <input type="text" name="precio" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Propietario (Cliente)</label>
+        <select name="nif_cliente" class="form-select" required>
+            <option value="">Selecciona un cliente...</option>
+            {% for cliente in clientes %}
+            <option value="{{ cliente.nif }}">{{ cliente.nombre }} ({{ cliente.nif }})</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar Coche</button>
+</form>
+{% endblock %}

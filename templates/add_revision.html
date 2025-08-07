@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Agregar Una Revisión{% endblock %}
+{% block body %}
+<h2>Agregar Nueva Revisión</h2>
+<form action="{{ url_for('add_revision') }}" method="POST">
+    <div class="mb-3">
+        <label class="form-label">Coche (Matrícula)</label>
+        <select name="matricula_coche" class="form-select" required>
+            <option value="">Selecciona un coche...</option>
+            {% for coche in coches %}
+            <option value="{{ coche.matricula }}">{{ coche.marca }} {{ coche.modelo }} ({{ coche.matricula }})</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" name="filtro" class="form-check-input">
+        <label class="form-check-label">Cambio de Filtro</label>
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" name="aceite" class="form-check-input">
+        <label class="form-check-label">Cambio de Aceite</label>
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" name="frenos" class="form-check-input">
+        <label class="form-check-label">Revisión de Frenos</label>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar Revisión</button>
+</form>
+{% endblock %}
