@@ -1,7 +1,12 @@
-from flask import Flask, render_template,request,redirect,url_for,flash #importaciones
+from flask import Flask,jsonify, render_template,request,redirect,url_for,flash #importaciones
 import pymysql
 import pymysql.cursors
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
+
+CORS(app, origins=["http://localhost:62384/","http://192.168.10.212"])
+
 app.secret_key =  '12'
 
 def connect_to_db():
@@ -308,5 +313,163 @@ def delete_revision(codigo):
         conn.close()
     return redirect(url_for('inicio'))
 
+
+# Endpoint para consultar la lista de todos los clientes
+@app.route('/datos/clientes', methods=['GET'])
+def consultar_todos_los_clientes():
+    try:
+        conn = connect_to_db()
+        cur = conn.cursor()
+        cur.execute("SELECT nif, nombre FROM clientes")
+        lista_clientes = cur.fetchall()
+       
+        return jsonify(lista_clientes)
+    except Exception as e:
+       
+        return jsonify({'mensaje': 'Error al obtener los clientes', 'error': str(e)}), 500
+    finally:
+        if 'cur' in locals() and cur is not None:
+            cur.close()
+        if 'conn' in locals() and conn is not None:
+            conn.close()
+
+# coches mostrar datos
+
+@app.route('/datos/coches', methods=['GET'])
+def consultar_todos_los_coches():
+    try:
+        conn = connect_to_db()
+        cur = conn.cursor() 
+        cur.execute("""
+            SELECT c.*, cl.nombre as propietario
+            FROM coches c
+            JOIN clientes cl ON c.nif_cliente = cl.nif
+        """)
+        lista_coches = cur.fetchall()
+        return jsonify(lista_coches)
+    except Exception as e:
+        return jsonify({'mensaje': 'Error al obtener los coches', 'error': str(e)}), 500
+    finally:
+        if 'cur' in locals() and cur is not None:
+            cur.close()
+        if 'conn' in locals() and conn is not None:
+            conn.close()
+
+@app.route('/datos/revisiones', methods=['GET'])
+def consultar_todas_las_revisiones():
+    try:
+       
+        conn = connect_to_db()
+        cur = conn.cursor()
+
+        cur.execute("""
+            SELECT r.*, c.marca, c.modelo
+            FROM revisiones r
+            JOIN coches c ON r.matricula_coche = c.matricula
+        """)
+        lista_de_revisiones = cur.fetchall()
+
+       
+        return jsonify(lista_de_revisiones)
+
+    except Exception as e:
+       
+        return jsonify({'mensaje':  'Error al obtener las revisiones', 'error': str(e)}), 500
+    finally:
+       
+        if 'cur' in locals() and cur is not None:
+            cur.close()
+        if 'conn' in locals() and conn is not None:
+            conn.close()
+
+#ruta API PARA AGREGAR  clientes consumo de api con flutter
+@app.route('/api/clientes', methods=['GET'] )
+def api_add_clientes_desde_url():
+    try:
+       nif = request.args.get('nif')
+       nombre = request.args.get('nombre')
+       direccion = request.args.get('direccion')
+       telefono  = request.args.get('telefono')
+
+       if not all([nif,nombre,direccion,telefono]):
+           return jsonify({'error': 'faltan campos obligatorios en base de datos'}), 400
+       
+       conn = connect_to_db()
+       cur = conn.cursor()
+       cur.execute("""
+             INSERT INTO clientes (nif,nombre,direccion,telefono)
+                   VALUES (%s,%s,%s,%s)   
+                   """, (nif,nombre,direccion,telefono))
+       conn.commit()
+       new_id = cur.lastrowid
+       cur.close()
+       conn.close()
+       return jsonify({'messge': 'cliente agregado desde URL', 'id':new_id}), 201
+        
+    except Exception as e:
+      return jsonify({'error':str(e)}), 500
+    
+
+#api de agregar coche  con python para registrar en flutter
+@app.route('/api/coches', methods=['GET'])
+def api_add_coches_desde_url():
+    try:
+        matricula = request.args.get('matricula')    
+        marca = request.args.get('marca')
+        modelo = request.args.get('modelo')
+        color = request.args.get('color')
+        precio = request.args.get('precio')
+        nif_cliente = request.args.get('nif_cliente')
+
+        if not all([matricula,marca,modelo,color,precio,nif_cliente]):
+             
+             return jsonify({'error': 'faltan campos obligatorios'}), 400
+        
+        conn = connect_to_db()
+        cur = conn.cursor()
+        cur.execute("""
+            INSERT INTO coches (matricula,marca,modelo,color,precio,nif_cliente)
+             VALUES (%s, %s, %s, %s, %s, %s)
+      """, (matricula,marca,modelo,color,precio,nif_cliente))
+        
+        conn.commit()
+        new_id = cur.lastrowid
+        cur.close()
+        conn.close()
+        return jsonify({'messge': 'Coche agregado desde URL', 'id': new_id }), 201
+     
+    except Exception as e:
+        return jsonify({'error': str(e)}),500
+    
+
+@app.route('/api/revisiones', methods=['GET'] )    
+def api_add_revisiones_desde_url():
+    try:
+        # Ya NO se recibe el código desde la URL
+        filtro = request.args.get('filtro')
+        aceite = request.args.get('aceite')
+        frenos = request.args.get('frenos')
+        matricula_coche = request.args.get('matricula_coche')
+
+        # La validación ya NO incluye el código
+        if not all([filtro, aceite, frenos, matricula_coche]):
+            return jsonify({'error':'faltan campos obligatorios' }), 400
+        
+        conn = connect_to_db()
+        cur = conn.cursor()
+        # La consulta SQL ya NO inserta el código
+        cur.execute("""
+             INSERT INTO revisiones (filtro, aceite, frenos, matricula_coche)
+                    VALUES (%s, %s, %s, %s)
+        """, (filtro, aceite, frenos, matricula_coche))
+        conn.commit()
+        new_id = cur.lastrowid
+        cur.close()
+        conn.close()
+        return jsonify({'message':'Revision agregada desde la url', 'id': new_id }), 201
+    
+    except  Exception as e:
+        return jsonify({'error':str(e)}), 500
+
 if __name__ ==   '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host='0.0.0.0', debug=True, port=5000)
